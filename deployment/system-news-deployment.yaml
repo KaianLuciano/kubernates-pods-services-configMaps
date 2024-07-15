@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: system-news-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: system-news
+      labels:
+        app: system-news
+    spec:
+      containers:
+        - name: system-news-container
+          image: aluracursos/sistema-noticias:1
+          ports:
+            - containerPort: 80
+  selector:
+    matchLabels:
+      app: system-news
